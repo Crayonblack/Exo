@@ -40,7 +40,7 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 
-  /* EXO Energy System Colors */
+  
   --data-solar: #00D9FF;
   --data-battery: #FF6B9D;
   --data-load: #A855F7;
@@ -88,7 +88,7 @@
   --sidebar-border: rgba(255, 255, 255, 0.08);
   --sidebar-ring: rgba(0, 217, 255, 0.5);
 
-  /* EXO Energy System Colors - Dark Mode */
+  
   --data-solar: #00D9FF;
   --data-battery: #F59E0B;
   --data-load: #6B7280;
@@ -99,7 +99,7 @@
   --error: #EF4444;
   --info: #00D9FF;
 
-  /* Gradient Stops for Metric Cards */
+  
   --gradient-solar-from: rgba(0, 217, 255, 0.15);
   --gradient-solar-to: rgba(0, 217, 255, 0.05);
 
@@ -180,10 +180,7 @@
     @apply bg-background text-foreground;
   }
 
-  /**
-  * Default typography styles for HTML elements (h1-h4, p, label, button, input).
-  * These are in @layer base, so Tailwind utility classes (like text-sm, text-lg) automatically override them.
-  */
+  
 
   html {
     font-size: var(--font-size);

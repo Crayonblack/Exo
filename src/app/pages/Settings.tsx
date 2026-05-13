@@ -1,11 +1,11 @@
 'use client';
 
-import { Card } from '../components/Card';
-import { Button } from '../components/Button';
-import { Badge } from '../components/Badge';
+import { Card } from '../components/core/Card';
+import { Button } from '../components/core/Button';
+import { Badge } from '../components/core/Badge';
 import { User, Bell, Shield, Database, Wifi, Download } from 'lucide-react';
 import { useLoadingState } from '../hooks/useLoadingState';
-import { SkeletonCard } from '../components/Skeleton';
+import { SkeletonCard } from '../components/core/Skeleton';
 
 export default function Settings() {
   const isLoading = useLoadingState({ delay: 600 });
@@ -26,7 +26,6 @@ export default function Settings() {
 
   return (
     <div className="space-y-8">
-      {/* Profile Section */}
       <Card variant="gradient" className="p-4 sm:p-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
           <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -58,7 +57,6 @@ export default function Settings() {
         </div>
       </Card>
 
-      {/* Notification Settings */}
       <Card variant="gradient" className="p-4 sm:p-6">
         <div className="flex items-center gap-3 mb-6">
           <div className="w-10 h-10 rounded-lg bg-info/10 text-info flex items-center justify-center">
@@ -78,7 +76,7 @@ export default function Settings() {
           ].map((item, index) => (
             <div key={index} className="flex items-center justify-between p-3 rounded-lg border border-border">
               <span className="text-sm font-medium">{item.name}</span>
-              <button className={`w-12 h-6 rounded-full transition-colors ${
+              <button className={`w-12 h-6 rounded-full transition-colors cursor-pointer ${
                 item.enabled ? 'bg-success' : 'bg-muted'
               } relative`}>
                 <div className={`w-5 h-5 rounded-full bg-white absolute top-0.5 transition-transform ${
@@ -90,7 +88,6 @@ export default function Settings() {
         </div>
       </Card>
 
-      {/* System Settings */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Card variant="gradient" className="p-4 sm:p-6">
           <div className="flex items-center gap-3 mb-4">
@@ -145,7 +142,6 @@ export default function Settings() {
         </Card>
       </div>
 
-      {/* Data & Privacy */}
       <Card variant="gradient" className="p-4 sm:p-6">
         <div className="flex items-center gap-3 mb-6">
           <div className="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">

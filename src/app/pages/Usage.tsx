@@ -1,11 +1,50 @@
 'use client';
 
-import { Card } from '../components/Card';
-import { ProgressBar } from '../components/ProgressBar';
-import { Badge } from '../components/Badge';
+import { Card } from '../components/core/Card';
+import { ProgressBar } from '../components/core/ProgressBar';
+import { AnimatedNumber } from '../components/core/AnimatedNumber';
+import { Badge } from '../components/core/Badge';
 import { Zap, Home, Lightbulb, Wind, Tv, Thermometer, Droplet } from 'lucide-react';
 import { useLoadingState } from '../hooks/useLoadingState';
-import { SkeletonStatGrid, SkeletonChart, SkeletonTable, SkeletonCard } from '../components/Skeleton';
+import { useState } from 'react';
+import { Skeleton, SkeletonStatGrid, SkeletonChart, SkeletonTable, SkeletonCard, SkeletonListItem } from '../components/core/Skeleton';
+import { PowerUsageChart, PowerUsageData } from '../components/charts/PowerUsageChart';
+
+const generateUsageData = (filter: 'Day' | 'Week' | 'Month'): PowerUsageData[] => {
+  const data: PowerUsageData[] = [];
+  let points = 24; 
+  let timeStep = 60 * 60 * 1000; 
+
+  if (filter === 'Week') {
+    points = 7;
+    timeStep = 24 * 60 * 60 * 1000; 
+  } else if (filter === 'Month') {
+    points = 30;
+    timeStep = 24 * 60 * 60 * 1000; 
+  }
+
+  const now = new Date();
+  
+  for (let i = points; i >= 0; i--) {
+    const time = new Date(now.getTime() - i * timeStep);
+    let timeLabel = '';
+    
+    if (filter === 'Day') {
+      timeLabel = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    } else {
+      timeLabel = time.toLocaleDateString([], { month: 'short', day: 'numeric' });
+    }
+
+    data.push({
+      time: timeLabel,
+      solar: Number((Math.random() * 5 + 2).toFixed(2)),
+      battery: Number((Math.random() * 3).toFixed(2)),
+      load: Number((Math.random() * 4 + 1).toFixed(2)),
+      gridImport: Number((Math.random() * 2).toFixed(2)),
+    });
+  }
+  return data;
+};
 
 const devices = [
   { id: 1, name: 'HVAC System', room: 'Whole House', power: 2.8, status: 'active', icon: <Wind className="w-5 h-5" /> },
@@ -16,39 +55,62 @@ const devices = [
 ];
 
 export default function Usage() {
+  const [filter, setFilter] = useState<'Day' | 'Week' | 'Month'>('Day');
   const isLoading = useLoadingState({ delay: 850 });
 
   if (isLoading) {
     return (
       <div className="space-y-8">
         <SkeletonStatGrid count={3} className="grid-cols-1 md:grid-cols-3" />
-        <SkeletonChart height={300} />
-        <SkeletonTable rows={5} />
-        <SkeletonCard lines={5} />
+        <Card variant="gradient" className="p-4 sm:p-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <div className="min-w-0">
+              <Skeleton className="h-6 w-48 mb-2" />
+              <Skeleton className="h-4 w-32" />
+            </div>
+            <div className="flex gap-2">
+              <Skeleton className="h-9 w-12 rounded-lg" />
+              <Skeleton className="h-9 w-12 rounded-lg" />
+              <Skeleton className="h-9 w-12 rounded-lg" />
+            </div>
+          </div>
+          <div className="w-full pt-4">
+            <Skeleton className="w-full rounded-lg" style={{ height: '300px' }} />
+          </div>
+        </Card>
+        <Card variant="gradient" className="p-4 sm:p-6">
+          <Skeleton className="h-6 w-48 mb-6" />
+          <div className="space-y-4">
+            <SkeletonListItem />
+            <SkeletonListItem />
+            <SkeletonListItem />
+            <SkeletonListItem />
+            <SkeletonListItem />
+          </div>
+        </Card>
       </div>
     );
   }
 
   return (
     <div className="space-y-8">
-      {/* Header Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Card variant="gradient" glow className="p-6">
           <div className="text-sm text-muted-foreground mb-2">Total Consumption Today</div>
-          <div className="text-3xl font-bold text-foreground">45.2 kWh</div>
+          <div className="text-3xl font-bold text-foreground"><AnimatedNumber value={45.2} decimals={1} suffix=" kWh" /></div>
           <div className="text-xs text-success mt-2 flex items-center gap-1">
-            ↓ 12% vs yesterday
+            ↓ <AnimatedNumber value={12} suffix="%" /> vs yesterday
             <span className="inline-block w-1 h-1 rounded-full bg-success animate-pulse" />
           </div>
         </Card>
         <Card variant="gradient" glow className="p-6">
           <div className="text-sm text-muted-foreground mb-2">Average Power</div>
-          <div className="text-3xl font-bold text-foreground">3.8 kW</div>
+          <div className="text-3xl font-bold text-foreground"><AnimatedNumber value={3.8} decimals={1} suffix=" kW" /></div>
           <div className="text-xs text-muted-foreground mt-2">Real-time average</div>
         </Card>
         <Card variant="gradient" glow className="p-6">
           <div className="text-sm text-muted-foreground mb-2">Peak Usage</div>
-          <div className="text-3xl font-bold text-foreground">7.2 kW</div>
+          <div className="text-3xl font-bold text-foreground"><AnimatedNumber value={7.2} decimals={1} suffix=" kW" /></div>
           <div className="text-xs text-warning mt-2 flex items-center gap-1">
             At 6:45 PM
             <span className="inline-block w-1 h-1 rounded-full bg-warning animate-pulse" />
@@ -56,7 +118,6 @@ export default function Usage() {
         </Card>
       </div>
 
-      {/* Usage Chart */}
       <Card variant="gradient" className="p-4 sm:p-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div className="min-w-0">
@@ -64,26 +125,31 @@ export default function Usage() {
             <p className="text-xs sm:text-sm text-muted-foreground">Hourly breakdown</p>
           </div>
           <div className="flex gap-2 flex-shrink-0">
-            <button className="px-2.5 sm:px-3 py-1.5 text-xs rounded-lg bg-gradient-to-r from-primary to-primary/90 text-primary-foreground shadow-md hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all duration-300">Day</button>
-            <button className="px-2.5 sm:px-3 py-1.5 text-xs rounded-lg border border-border/50 bg-background/50 backdrop-blur-sm hover:border-primary/30 hover:shadow-md transition-all duration-300">Week</button>
-            <button className="px-2.5 sm:px-3 py-1.5 text-xs rounded-lg border border-border/50 bg-background/50 backdrop-blur-sm hover:border-primary/30 hover:shadow-md transition-all duration-300">Month</button>
+            <button 
+              onClick={() => setFilter('Day')}
+              className={`px-2.5 sm:px-3 py-1.5 text-xs rounded-lg transition-all duration-300 cursor-pointer ${filter === 'Day' ? 'bg-gradient-to-r from-primary to-primary/90 text-primary-foreground shadow-md hover:shadow-primary-glow' : 'border border-border/50 bg-background/50 backdrop-blur-sm hover:border-primary/30 hover:shadow-md'}`}
+            >Day</button>
+            <button 
+              onClick={() => setFilter('Week')}
+              className={`px-2.5 sm:px-3 py-1.5 text-xs rounded-lg transition-all duration-300 cursor-pointer ${filter === 'Week' ? 'bg-gradient-to-r from-primary to-primary/90 text-primary-foreground shadow-md hover:shadow-primary-glow' : 'border border-border/50 bg-background/50 backdrop-blur-sm hover:border-primary/30 hover:shadow-md'}`}
+            >Week</button>
+            <button 
+              onClick={() => setFilter('Month')}
+              className={`px-2.5 sm:px-3 py-1.5 text-xs rounded-lg transition-all duration-300 cursor-pointer ${filter === 'Month' ? 'bg-gradient-to-r from-primary to-primary/90 text-primary-foreground shadow-md hover:shadow-primary-glow' : 'border border-border/50 bg-background/50 backdrop-blur-sm hover:border-primary/30 hover:shadow-md'}`}
+            >Month</button>
           </div>
         </div>
-        <div className="h-[300px] flex items-center justify-center bg-muted/30 rounded-lg border border-dashed border-border">
-          <div className="text-center space-y-2">
-            <div className="text-4xl">⚡</div>
-            <p className="text-sm text-muted-foreground">Hourly Usage Chart</p>
-          </div>
+        <div className="w-full pt-4">
+          <PowerUsageChart data={generateUsageData(filter)} height={300} />
         </div>
       </Card>
 
-      {/* Device List */}
       <Card variant="gradient" className="p-4 sm:p-6">
         <h3 className="font-semibold mb-4 sm:mb-6 text-base">Active Devices</h3>
         <div className="space-y-3 sm:space-y-4">
           {devices.map((device) => (
-            <div key={device.id} className="group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg border border-border/50 bg-background/30 backdrop-blur-sm hover:bg-accent/30 hover:border-primary/30 hover:shadow-[0_0_16px_rgba(0,229,255,0.1)] transition-all duration-300">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center group-hover:shadow-[0_0_16px_rgba(0,229,255,0.3)] transition-all duration-300 flex-shrink-0">
+            <div key={device.id} className="group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg border border-border/50 bg-background/30 backdrop-blur-sm hover:bg-accent/30 hover:border-primary/30 hover:shadow-primary-glow transition-all duration-300">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center group-hover:shadow-primary-glow transition-all duration-300 flex-shrink-0">
                 {device.icon}
               </div>
               <div className="flex-1 min-w-0">
@@ -104,59 +170,58 @@ export default function Usage() {
         </div>
       </Card>
 
-      {/* Category Breakdown */}
       <Card variant="gradient" className="p-4 sm:p-6">
         <h3 className="font-semibold mb-6 text-base">Consumption by Category</h3>
         <div className="space-y-3 sm:space-y-4">
           <div className="flex items-center gap-3 sm:gap-4">
-            <Wind className="w-6 h-6 sm:w-8 sm:h-8 text-data-load flex-shrink-0" />
+            <Wind className="w-6 h-6 sm:w-8 sm:h-8 text-load flex-shrink-0" />
             <div className="flex-1 min-w-0">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm font-medium">Climate Control</span>
-                <span className="text-xs text-muted-foreground font-medium">41%</span>
+                <span className="text-xs text-muted-foreground font-medium"><AnimatedNumber value={41} suffix="%" /></span>
               </div>
-              <ProgressBar value={41} max={100} color="load" />
+              <ProgressBar value={41} max={100} color="load" delay={0} />
               <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                <span>18.5 kWh</span>
+                <span><AnimatedNumber value={18.5} decimals={1} suffix=" kWh" /></span>
               </div>
             </div>
           </div>
           <div className="flex items-center gap-3 sm:gap-4">
-            <Droplet className="w-6 h-6 sm:w-8 sm:h-8 text-data-solar flex-shrink-0" />
+            <Droplet className="w-6 h-6 sm:w-8 sm:h-8 text-solar flex-shrink-0" />
             <div className="flex-1 min-w-0">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm font-medium">Water Heating</span>
-                <span className="text-xs text-muted-foreground font-medium">27%</span>
+                <span className="text-xs text-muted-foreground font-medium"><AnimatedNumber value={27} suffix="%" /></span>
               </div>
-              <ProgressBar value={27} max={100} color="solar" />
+              <ProgressBar value={27} max={100} color="solar" delay={150} />
               <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                <span>12.3 kWh</span>
+                <span><AnimatedNumber value={12.3} decimals={1} suffix=" kWh" /></span>
               </div>
             </div>
           </div>
           <div className="flex items-center gap-3 sm:gap-4">
-            <Home className="w-6 h-6 sm:w-8 sm:h-8 text-data-battery flex-shrink-0" />
+            <Home className="w-6 h-6 sm:w-8 sm:h-8 text-battery flex-shrink-0" />
             <div className="flex-1 min-w-0">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm font-medium">Appliances</span>
-                <span className="text-xs text-muted-foreground font-medium">22%</span>
+                <span className="text-xs text-muted-foreground font-medium"><AnimatedNumber value={22} suffix="%" /></span>
               </div>
-              <ProgressBar value={22} max={100} color="battery" />
+              <ProgressBar value={22} max={100} color="battery" delay={300} />
               <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                <span>9.8 kWh</span>
+                <span><AnimatedNumber value={9.8} decimals={1} suffix=" kWh" /></span>
               </div>
             </div>
           </div>
           <div className="flex items-center gap-3 sm:gap-4">
-            <Lightbulb className="w-6 h-6 sm:w-8 sm:h-8 text-data-grid-import flex-shrink-0" />
+            <Lightbulb className="w-6 h-6 sm:w-8 sm:h-8 text-grid-import flex-shrink-0" />
             <div className="flex-1 min-w-0">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm font-medium">Lighting & Other</span>
-                <span className="text-xs text-muted-foreground font-medium">10%</span>
+                <span className="text-xs text-muted-foreground font-medium"><AnimatedNumber value={10} suffix="%" /></span>
               </div>
-              <ProgressBar value={10} max={100} color="grid-import" />
+              <ProgressBar value={10} max={100} color="grid-import" delay={450} />
               <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                <span>4.6 kWh</span>
+                <span><AnimatedNumber value={4.6} decimals={1} suffix=" kWh" /></span>
               </div>
             </div>
           </div>

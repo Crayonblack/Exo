@@ -1,11 +1,11 @@
 'use client';
 
-import { Card } from '../components/Card';
-import { Badge } from '../components/Badge';
-import { Button } from '../components/Button';
+import { Card } from '../components/core/Card';
+import { Badge } from '../components/core/Badge';
+import { Button } from '../components/core/Button';
 import { AlertCircle, Info, AlertTriangle, CheckCircle, Settings } from 'lucide-react';
 import { useLoadingState } from '../hooks/useLoadingState';
-import { SkeletonStatGrid, SkeletonTable, SkeletonCard } from '../components/Skeleton';
+import { SkeletonStatGrid, SkeletonTable, SkeletonCard } from '../components/core/Skeleton';
 
 const alerts = [
   {
@@ -78,11 +78,10 @@ export default function Alerts() {
 
   return (
     <div className="space-y-8">
-      {/* Alert Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <Card variant="gradient" glow className="p-6">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-lg bg-error/10 text-error flex items-center justify-center dark:shadow-[0_0_16px_rgba(239,68,68,0.3)] shadow-[0_0_16px_rgba(239,68,68,0.6)]">
+            <div className="w-12 h-12 rounded-lg bg-error/10 text-error flex items-center justify-center shadow-error-glow">
               <AlertCircle className="w-6 h-6" />
             </div>
             <div>
@@ -93,7 +92,7 @@ export default function Alerts() {
         </Card>
         <Card variant="gradient" glow className="p-6">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-lg bg-warning/10 text-warning flex items-center justify-center dark:shadow-[0_0_16px_rgba(245,158,11,0.3)] shadow-[0_0_16px_rgba(230,138,0,0.6)]">
+            <div className="w-12 h-12 rounded-lg bg-warning/10 text-warning flex items-center justify-center shadow-warning-glow">
               <AlertTriangle className="w-6 h-6" />
             </div>
             <div>
@@ -104,7 +103,7 @@ export default function Alerts() {
         </Card>
         <Card variant="gradient" glow className="p-6">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-lg bg-info/10 text-info flex items-center justify-center dark:shadow-[0_0_16px_rgba(0,229,255,0.3)] shadow-[0_0_16px_rgba(0,168,201,0.6)]">
+            <div className="w-12 h-12 rounded-lg bg-info/10 text-info flex items-center justify-center shadow-solar-glow">
               <Info className="w-6 h-6" />
             </div>
             <div>
@@ -115,7 +114,7 @@ export default function Alerts() {
         </Card>
         <Card variant="gradient" glow className="p-6">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-lg bg-success/10 text-success flex items-center justify-center dark:shadow-[0_0_16px_rgba(16,185,129,0.3)] shadow-[0_0_16px_rgba(16,185,129,0.6)]">
+            <div className="w-12 h-12 rounded-lg bg-success/10 text-success flex items-center justify-center shadow-success-glow">
               <CheckCircle className="w-6 h-6" />
             </div>
             <div>
@@ -126,7 +125,6 @@ export default function Alerts() {
         </Card>
       </div>
 
-      {/* Active Alerts */}
       <Card variant="gradient" className="p-4 sm:p-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div className="min-w-0">
@@ -178,7 +176,6 @@ export default function Alerts() {
         </div>
       </Card>
 
-      {/* Alert Configuration */}
       <Card variant="gradient" className="p-4 sm:p-6">
         <h3 className="font-semibold mb-6 text-base">Alert Settings</h3>
         <div className="space-y-4">
@@ -192,7 +189,7 @@ export default function Alerts() {
                 <Badge variant={setting.enabled ? 'success' : 'neutral'} size="small">
                   {setting.enabled ? 'Enabled' : 'Disabled'}
                 </Badge>
-                <button className={`w-12 h-6 rounded-full transition-colors ${
+                <button className={`w-12 h-6 rounded-full transition-colors cursor-pointer ${
                   setting.enabled ? 'bg-success' : 'bg-muted'
                 } relative`}>
                   <div className={`w-5 h-5 rounded-full bg-white absolute top-0.5 transition-transform ${
