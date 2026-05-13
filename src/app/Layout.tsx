@@ -80,10 +80,10 @@ export default function Layout() {
           />
         </div>
         <div className="hidden lg:flex h-screen relative z-10">
-          <SideNav 
-            activeItem={activeNav} 
-            isCollapsed={isSidebarCollapsed} 
-            onToggleCollapse={() => setIsSidebarCollapsed(!isSidebarCollapsed)} 
+          <SideNav
+            activeItem={activeNav}
+            isCollapsed={isSidebarCollapsed}
+            onToggleCollapse={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
           />
 
           <div className="flex-1 overflow-auto transition-all duration-300 ease-out">
@@ -100,10 +100,9 @@ export default function Layout() {
         <div className="lg:hidden min-h-screen pb-24 relative z-10">
           <div className="fixed top-0 right-0 z-50 mr-3">
             <div className="relative">
-              <div className="glass-effect border border-border/50 rounded-bl-2xl rounded-br-lg rounded-tr-lg px-3 py-2 shadow-lg">
+              <div className="glass-effect border border-border/50 rounded-b-lg px-3 py-2 shadow-lg">
                 <Logo width={60} />
               </div>
-              <div className="absolute -top-1 right-3 w-2 h-2 rounded-full bg-background border border-border/50" />
             </div>
           </div>
           <div className="px-4 pt-4 pb-8">
