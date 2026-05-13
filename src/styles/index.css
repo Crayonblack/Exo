@@ -14,7 +14,7 @@
   /* Data Colors - Light */
   --color-solar: #00A8C9;
   --color-battery: #E68A00;
-  --color-load: #5B6570;
+  --color-load: #8B5CF6;
   --color-grid-export: #0E9F6E;
   --color-grid-import: #3073D6;
 
@@ -25,7 +25,7 @@
   /* Shadows */
   --shadow-solar-glow: 0 0 30px rgba(0, 168, 201, 0.3);
   --shadow-battery-glow: 0 0 30px rgba(230, 138, 0, 0.3);
-  --shadow-load-glow: 0 0 30px rgba(91, 101, 112, 0.3);
+  --shadow-load-glow: 0 0 30px rgba(139, 92, 246, 0.3);
   --shadow-grid-export-glow: 0 0 30px rgba(14, 159, 110, 0.3);
   --shadow-grid-import-glow: 0 0 30px rgba(48, 115, 214, 0.3);
   --shadow-primary-glow: 0 0 20px rgba(0, 184, 217, 0.3);
