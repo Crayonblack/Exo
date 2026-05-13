@@ -1,0 +1,714 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "exo-energy": {
+    "color": {
+      "background": {
+        "default": {
+          "$type": "color",
+          "light": "#f8f9fa",
+          "dark": "#0A0E14"
+        },
+        "elevated": {
+          "$type": "color",
+          "light": "#ffffff",
+          "dark": "#0F1419"
+        }
+      },
+      "foreground": {
+        "$type": "color",
+        "light": "#1a1a1a",
+        "dark": "#FFFFFF"
+      },
+      "primary": {
+        "$type": "color",
+        "light": "#00B8D9",
+        "dark": "#00D9FF"
+      },
+      "card": {
+        "$type": "color",
+        "light": "#ffffff",
+        "dark": "#161B22"
+      },
+      "muted": {
+        "$type": "color",
+        "light": "#e9ecef",
+        "dark": "#1F2937"
+      },
+      "muted-foreground": {
+        "$type": "color",
+        "light": "#6c757d",
+        "dark": "#9CA3AF"
+      },
+      "border": {
+        "$type": "color",
+        "light": "rgba(0, 0, 0, 0.12)",
+        "dark": "rgba(255, 255, 255, 0.1)"
+      },
+      "semantic": {
+        "success": {
+          "$type": "color",
+          "value": "#10B981"
+        },
+        "warning": {
+          "$type": "color",
+          "value": "#F59E0B"
+        },
+        "error": {
+          "$type": "color",
+          "value": "#EF4444"
+        },
+        "info": {
+          "$type": "color",
+          "value": "#00B8D9"
+        }
+      },
+      "data": {
+        "solar": {
+          "$type": "color",
+          "light": "#00A8C9",
+          "dark": "#00E5FF"
+        },
+        "battery": {
+          "$type": "color",
+          "light": "#E68A00",
+          "dark": "#FFB800"
+        },
+        "load": {
+          "$type": "color",
+          "light": "#5B6570",
+          "dark": "#8B5CF6"
+        },
+        "grid-export": {
+          "$type": "color",
+          "light": "#0E9F6E",
+          "dark": "#10B981"
+        },
+        "grid-import": {
+          "$type": "color",
+          "light": "#3073D6",
+          "dark": "#3B82F6"
+        }
+      },
+      "chart": {
+        "1": {
+          "$type": "color",
+          "value": "#00B8D9"
+        },
+        "2": {
+          "$type": "color",
+          "value": "#FF6B9D"
+        },
+        "3": {
+          "$type": "color",
+          "value": "#A855F7"
+        },
+        "4": {
+          "$type": "color",
+          "value": "#10B981"
+        },
+        "5": {
+          "$type": "color",
+          "value": "#F59E0B"
+        }
+      }
+    },
+    "spacing": {
+      "xs": {
+        "$type": "dimension",
+        "value": "0.25rem"
+      },
+      "sm": {
+        "$type": "dimension",
+        "value": "0.5rem"
+      },
+      "md": {
+        "$type": "dimension",
+        "value": "1rem"
+      },
+      "lg": {
+        "$type": "dimension",
+        "value": "1.5rem"
+      },
+      "xl": {
+        "$type": "dimension",
+        "value": "2rem"
+      },
+      "2xl": {
+        "$type": "dimension",
+        "value": "3rem"
+      }
+    },
+    "borderRadius": {
+      "sm": {
+        "$type": "dimension",
+        "value": "0.25rem"
+      },
+      "md": {
+        "$type": "dimension",
+        "value": "0.375rem"
+      },
+      "lg": {
+        "$type": "dimension",
+        "value": "0.5rem"
+      },
+      "xl": {
+        "$type": "dimension",
+        "value": "0.75rem"
+      },
+      "2xl": {
+        "$type": "dimension",
+        "value": "1rem"
+      },
+      "full": {
+        "$type": "dimension",
+        "value": "9999px"
+      }
+    },
+    "typography": {
+      "fontFamily": {
+        "sans": {
+          "$type": "fontFamily",
+          "value": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        }
+      },
+      "fontSize": {
+        "xs": {
+          "$type": "dimension",
+          "value": "0.75rem"
+        },
+        "sm": {
+          "$type": "dimension",
+          "value": "0.875rem"
+        },
+        "base": {
+          "$type": "dimension",
+          "value": "1rem"
+        },
+        "lg": {
+          "$type": "dimension",
+          "value": "1.125rem"
+        },
+        "xl": {
+          "$type": "dimension",
+          "value": "1.25rem"
+        },
+        "2xl": {
+          "$type": "dimension",
+          "value": "1.5rem"
+        },
+        "3xl": {
+          "$type": "dimension",
+          "value": "1.875rem"
+        },
+        "4xl": {
+          "$type": "dimension",
+          "value": "2.25rem"
+        }
+      },
+      "fontWeight": {
+        "normal": {
+          "$type": "fontWeight",
+          "value": "400"
+        },
+        "medium": {
+          "$type": "fontWeight",
+          "value": "500"
+        },
+        "semibold": {
+          "$type": "fontWeight",
+          "value": "600"
+        },
+        "bold": {
+          "$type": "fontWeight",
+          "value": "700"
+        }
+      },
+      "lineHeight": {
+        "tight": {
+          "$type": "number",
+          "value": 1.25
+        },
+        "normal": {
+          "$type": "number",
+          "value": 1.5
+        },
+        "relaxed": {
+          "$type": "number",
+          "value": 1.75
+        }
+      }
+    },
+    "shadow": {
+      "sm": {
+        "$type": "shadow",
+        "light": {
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0px",
+          "color": "rgba(0, 0, 0, 0.05)"
+        },
+        "dark": {
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "4px",
+          "spread": "0px",
+          "color": "rgba(0, 0, 0, 0.3)"
+        }
+      },
+      "md": {
+        "$type": "shadow",
+        "light": [
+          {
+            "offsetX": "0px",
+            "offsetY": "4px",
+            "blur": "6px",
+            "spread": "0px",
+            "color": "rgba(0, 0, 0, 0.07)"
+          },
+          {
+            "offsetX": "0px",
+            "offsetY": "2px",
+            "blur": "4px",
+            "spread": "0px",
+            "color": "rgba(0, 0, 0, 0.05)"
+          }
+        ],
+        "dark": [
+          {
+            "offsetX": "0px",
+            "offsetY": "4px",
+            "blur": "12px",
+            "spread": "0px",
+            "color": "rgba(0, 0, 0, 0.4)"
+          },
+          {
+            "offsetX": "0px",
+            "offsetY": "2px",
+            "blur": "4px",
+            "spread": "0px",
+            "color": "rgba(0, 0, 0, 0.3)"
+          }
+        ]
+      },
+      "lg": {
+        "$type": "shadow",
+        "light": [
+          {
+            "offsetX": "0px",
+            "offsetY": "10px",
+            "blur": "15px",
+            "spread": "0px",
+            "color": "rgba(0, 0, 0, 0.1)"
+          },
+          {
+            "offsetX": "0px",
+            "offsetY": "4px",
+            "blur": "6px",
+            "spread": "0px",
+            "color": "rgba(0, 0, 0, 0.05)"
+          }
+        ],
+        "dark": [
+          {
+            "offsetX": "0px",
+            "offsetY": "8px",
+            "blur": "24px",
+            "spread": "0px",
+            "color": "rgba(0, 0, 0, 0.5)"
+          },
+          {
+            "offsetX": "0px",
+            "offsetY": "4px",
+            "blur": "8px",
+            "spread": "0px",
+            "color": "rgba(0, 0, 0, 0.4)"
+          }
+        ]
+      }
+    },
+    "effect": {
+      "glow": {
+        "error": {
+          "$type": "shadow",
+          "light": {
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "16px",
+            "spread": "0px",
+            "color": "rgba(239, 68, 68, 0.6)"
+          },
+          "dark": {
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "16px",
+            "spread": "0px",
+            "color": "rgba(239, 68, 68, 0.3)"
+          }
+        },
+        "warning": {
+          "$type": "shadow",
+          "light": {
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "16px",
+            "spread": "0px",
+            "color": "rgba(230, 138, 0, 0.6)"
+          },
+          "dark": {
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "16px",
+            "spread": "0px",
+            "color": "rgba(245, 158, 11, 0.3)"
+          }
+        },
+        "success": {
+          "$type": "shadow",
+          "light": {
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "16px",
+            "spread": "0px",
+            "color": "rgba(16, 185, 129, 0.6)"
+          },
+          "dark": {
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "16px",
+            "spread": "0px",
+            "color": "rgba(16, 185, 129, 0.3)"
+          }
+        },
+        "info": {
+          "$type": "shadow",
+          "light": {
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "16px",
+            "spread": "0px",
+            "color": "rgba(0, 168, 201, 0.6)"
+          },
+          "dark": {
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "16px",
+            "spread": "0px",
+            "color": "rgba(0, 229, 255, 0.3)"
+          }
+        },
+        "solar": {
+          "$type": "shadow",
+          "value": {
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "20px",
+            "spread": "0px",
+            "color": "rgba(0, 229, 255, 0.4)"
+          }
+        },
+        "battery": {
+          "$type": "shadow",
+          "value": {
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "20px",
+            "spread": "0px",
+            "color": "rgba(255, 184, 0, 0.4)"
+          }
+        },
+        "load": {
+          "$type": "shadow",
+          "value": {
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "20px",
+            "spread": "0px",
+            "color": "rgba(139, 92, 246, 0.4)"
+          }
+        }
+      },
+      "glowLarge": {
+        "error": {
+          "$type": "shadow",
+          "light": {
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "30px",
+            "spread": "0px",
+            "color": "rgba(239, 68, 68, 0.6)"
+          },
+          "dark": {
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "30px",
+            "spread": "0px",
+            "color": "rgba(239, 68, 68, 0.3)"
+          }
+        },
+        "warning": {
+          "$type": "shadow",
+          "light": {
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "30px",
+            "spread": "0px",
+            "color": "rgba(230, 138, 0, 0.6)"
+          },
+          "dark": {
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "30px",
+            "spread": "0px",
+            "color": "rgba(245, 158, 11, 0.3)"
+          }
+        },
+        "success": {
+          "$type": "shadow",
+          "light": {
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "30px",
+            "spread": "0px",
+            "color": "rgba(16, 185, 129, 0.6)"
+          },
+          "dark": {
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "30px",
+            "spread": "0px",
+            "color": "rgba(16, 185, 129, 0.3)"
+          }
+        },
+        "info": {
+          "$type": "shadow",
+          "light": {
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "30px",
+            "spread": "0px",
+            "color": "rgba(0, 168, 201, 0.6)"
+          },
+          "dark": {
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "30px",
+            "spread": "0px",
+            "color": "rgba(0, 229, 255, 0.3)"
+          }
+        }
+      },
+      "blur": {
+        "sm": {
+          "$type": "blur",
+          "value": "4px"
+        },
+        "md": {
+          "$type": "blur",
+          "value": "12px"
+        },
+        "lg": {
+          "$type": "blur",
+          "value": "24px"
+        }
+      }
+    },
+    "gradient": {
+      "text": {
+        "foreground": {
+          "$type": "gradient",
+          "value": "linear-gradient(90deg, var(--foreground) 0%, var(--foreground) 50%, rgba(var(--foreground), 0.8) 100%)"
+        },
+        "primary": {
+          "$type": "gradient",
+          "value": "linear-gradient(90deg, var(--primary) 0%, var(--primary) 50%, rgba(var(--primary), 0.8) 100%)"
+        }
+      },
+      "background": {
+        "card": {
+          "$type": "gradient",
+          "value": "linear-gradient(135deg, var(--card) 0%, var(--background) 100%)"
+        },
+        "sidebar": {
+          "$type": "gradient",
+          "value": "linear-gradient(180deg, var(--sidebar) 0%, var(--sidebar) 50%, var(--background-elevated) 100%)"
+        }
+      },
+      "overlay": {
+        "subtle": {
+          "$type": "gradient",
+          "light": "linear-gradient(135deg, rgba(0, 184, 217, 0.05) 0%, transparent 50%, transparent 100%)",
+          "dark": "linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, transparent 50%, transparent 100%)"
+        },
+        "accent": {
+          "$type": "gradient",
+          "light": "linear-gradient(90deg, transparent 0%, rgba(0, 184, 217, 0.5) 50%, transparent 100%)",
+          "dark": "linear-gradient(90deg, transparent 0%, rgba(0, 217, 255, 0.5) 50%, transparent 100%)"
+        },
+        "shimmer": {
+          "$type": "gradient",
+          "light": "linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.03) 50%, transparent 100%)",
+          "dark": "linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.05) 50%, transparent 100%)"
+        }
+      },
+      "data": {
+        "solar": {
+          "$type": "gradient",
+          "value": "linear-gradient(90deg, var(--data-solar) 0%, var(--data-solar) 50%, rgba(var(--data-solar), 0.8) 100%)"
+        },
+        "battery": {
+          "$type": "gradient",
+          "value": "linear-gradient(90deg, var(--data-battery) 0%, var(--data-battery) 50%, rgba(var(--data-battery), 0.8) 100%)"
+        },
+        "load": {
+          "$type": "gradient",
+          "value": "linear-gradient(90deg, var(--data-load) 0%, var(--data-load) 50%, rgba(var(--data-load), 0.8) 100%)"
+        },
+        "grid-export": {
+          "$type": "gradient",
+          "value": "linear-gradient(90deg, var(--data-grid-export) 0%, var(--data-grid-export) 50%, rgba(var(--data-grid-export), 0.8) 100%)"
+        },
+        "grid-import": {
+          "$type": "gradient",
+          "value": "linear-gradient(90deg, var(--data-grid-import) 0%, var(--data-grid-import) 50%, rgba(var(--data-grid-import), 0.8) 100%)"
+        }
+      }
+    },
+    "animation": {
+      "duration": {
+        "fast": {
+          "$type": "duration",
+          "value": "150ms"
+        },
+        "normal": {
+          "$type": "duration",
+          "value": "300ms"
+        },
+        "slow": {
+          "$type": "duration",
+          "value": "500ms"
+        }
+      },
+      "easing": {
+        "default": {
+          "$type": "cubicBezier",
+          "value": [0.4, 0, 0.2, 1]
+        },
+        "easeOut": {
+          "$type": "cubicBezier",
+          "value": [0, 0, 0.2, 1]
+        },
+        "easeIn": {
+          "$type": "cubicBezier",
+          "value": [0.4, 0, 1, 1]
+        }
+      }
+    },
+    "component": {
+      "button": {
+        "height": {
+          "small": {
+            "$type": "dimension",
+            "value": "2rem"
+          },
+          "medium": {
+            "$type": "dimension",
+            "value": "2.5rem"
+          },
+          "large": {
+            "$type": "dimension",
+            "value": "3rem"
+          }
+        },
+        "paddingX": {
+          "small": {
+            "$type": "dimension",
+            "value": "0.75rem"
+          },
+          "medium": {
+            "$type": "dimension",
+            "value": "1rem"
+          },
+          "large": {
+            "$type": "dimension",
+            "value": "1.5rem"
+          }
+        }
+      },
+      "card": {
+        "padding": {
+          "small": {
+            "$type": "dimension",
+            "value": "1rem"
+          },
+          "medium": {
+            "$type": "dimension",
+            "value": "1.5rem"
+          },
+          "large": {
+            "$type": "dimension",
+            "value": "2rem"
+          }
+        },
+        "borderRadius": {
+          "$type": "dimension",
+          "value": "0.75rem"
+        }
+      },
+      "badge": {
+        "paddingX": {
+          "small": {
+            "$type": "dimension",
+            "value": "0.5rem"
+          },
+          "medium": {
+            "$type": "dimension",
+            "value": "0.625rem"
+          }
+        },
+        "paddingY": {
+          "small": {
+            "$type": "dimension",
+            "value": "0.125rem"
+          },
+          "medium": {
+            "$type": "dimension",
+            "value": "0.25rem"
+          }
+        }
+      },
+      "iconContainer": {
+        "size": {
+          "small": {
+            "$type": "dimension",
+            "value": "2rem"
+          },
+          "medium": {
+            "$type": "dimension",
+            "value": "2.5rem"
+          },
+          "large": {
+            "$type": "dimension",
+            "value": "3rem"
+          }
+        }
+      },
+      "progressBar": {
+        "height": {
+          "small": {
+            "$type": "dimension",
+            "value": "0.25rem"
+          },
+          "default": {
+            "$type": "dimension",
+            "value": "0.5rem"
+          },
+          "large": {
+            "$type": "dimension",
+            "value": "0.75rem"
+          }
+        }
+      }
+    }
+  }
+}
