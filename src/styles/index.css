@@ -67,7 +67,7 @@
 
 @layer utilities {
   .glass-effect {
-    @apply backdrop-blur-md bg-opacity-80;
+    @apply backdrop-blur-md;
   }
   :root .glass-effect { background-color: rgba(255, 255, 255, 0.8); }
   .dark .glass-effect { background-color: rgba(22, 27, 34, 0.7); }
