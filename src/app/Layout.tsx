@@ -88,8 +88,8 @@ export default function Layout() {
 
           <div className="flex-1 overflow-auto transition-all duration-300 ease-out">
             <div className={cn(
-              "p-4 sm:p-6 lg:p-8 mx-auto transition-all duration-300 ease-out",
-              isSidebarCollapsed ? "max-w-[1800px]" : "max-w-[1400px]"
+              "p-4 sm:p-6 lg:px-10 lg:py-8 mx-auto transition-all duration-300 ease-out",
+              isSidebarCollapsed ? "max-w-[2100px]" : "max-w-[1700px]"
             )}>
               <Header title={pageInfo.title} subtitle={pageInfo.subtitle} />
               <Outlet />
