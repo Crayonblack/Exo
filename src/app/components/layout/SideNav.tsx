@@ -15,6 +15,8 @@ interface NavItem {
 interface SideNavProps {
   className?: string;
   activeItem?: string;
+  isCollapsed: boolean;
+  onToggleCollapse: () => void;
 }
 
 const navItems: NavItem[] = [
@@ -27,8 +29,7 @@ const navItems: NavItem[] = [
 ];
 
 export const SideNav = forwardRef<HTMLDivElement, SideNavProps>(
-  ({ className }, ref) => {
-    const [isCollapsed, setIsCollapsed] = useState(false);
+  ({ className, isCollapsed, onToggleCollapse }, ref) => {
 
     return (
       <div
@@ -55,7 +56,7 @@ export const SideNav = forwardRef<HTMLDivElement, SideNavProps>(
             <Logo width={90} />
           </div>
           <button
-            onClick={() => setIsCollapsed(!isCollapsed)}
+            onClick={onToggleCollapse}
             className={cn(
               'group flex items-center justify-center rounded-lg flex-shrink-0 cursor-pointer',
               'transition-all duration-300 ease-out relative overflow-hidden',

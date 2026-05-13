@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { ThemeProvider } from './providers/ThemeProvider';
 import { SideNav } from './components/layout/SideNav';
 import { BottomNav } from './components/layout/BottomNav';
 import { Header } from './components/layout/Header';
 import { Logo } from './components/core/Logo';
+import { cn } from './utils/cn';
 
 const routeToNavItem: Record<string, string> = {
   '/': 'Dashboard',
@@ -24,6 +26,7 @@ const pageTitles: Record<string, { title: string; subtitle: string }> = {
 };
 
 export default function Layout() {
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const location = useLocation();
   const activeNav = routeToNavItem[location.pathname] || 'Dashboard';
   const pageInfo = pageTitles[location.pathname] || pageTitles['/'];
@@ -77,10 +80,17 @@ export default function Layout() {
           />
         </div>
         <div className="hidden lg:flex h-screen relative z-10">
-          <SideNav activeItem={activeNav} />
+          <SideNav 
+            activeItem={activeNav} 
+            isCollapsed={isSidebarCollapsed} 
+            onToggleCollapse={() => setIsSidebarCollapsed(!isSidebarCollapsed)} 
+          />
 
-          <div className="flex-1 overflow-auto">
-            <div className="p-8 max-w-[1600px] mx-auto">
+          <div className="flex-1 overflow-auto transition-all duration-300 ease-out">
+            <div className={cn(
+              "p-4 sm:p-6 lg:p-8 mx-auto transition-all duration-300 ease-out",
+              isSidebarCollapsed ? "max-w-[1800px]" : "max-w-[1400px]"
+            )}>
               <Header title={pageInfo.title} subtitle={pageInfo.subtitle} />
               <Outlet />
             </div>
